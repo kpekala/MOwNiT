@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/konrad/Pulpit/Studia/mownit/repo/cpp/main.cpp
+bits/stdc++.h
+-
+cmath
+-
+cstdlib
+-
+ctime
+-
+
