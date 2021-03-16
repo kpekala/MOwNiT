@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-typedef long double value_type;
+typedef double value_type;
 
 void test_random(value_type x, value_type y);
 
@@ -30,14 +30,28 @@ void full_test(value_type x, value_type y){
     }
 }
 
+void test_n(value_type x, value_type y, int n){
+    function<value_type(value_type,value_type)> methods[] = {&method1,&method2,&method3};
+    for(int i=0; i<3; i++){
+        value_type xi = x;
+        value_type yi = y;
+        for(int j=0; j<n; j++){
+            value_type dist = methods[i](xi, yi);
+            xi += dist/500.0;
+            yi += dist/500.0;
+            //cout<<xi<<" "<<yi<<endl;
+        }
+        cout<<"Final distance of method"<<i<<" : "<<methods[i](xi,yi)<<endl;
+    }
+}
+
 int main() {
     srand (static_cast <unsigned> (time(0)));
-    cout.precision(30);
-    //full_test(1,1);
-    //full_test(1.0/10.0,1.0/10.0);
-    full_test(1.0/3.0,1.0/3.0);
-    full_test(M_PI,M_PI);
-    test_random(1.0, 3.0);
+    cout.precision(20);
+    //full_test(1.0/3.0,1.0/3.0);
+    //full_test(M_PI,M_PI);
+    //test_random(1.0, 3.0);
+    test_n(1.0/3.0,1.4/3.14,10000);
 
     return 0;
 }
